@@ -1,26 +1,40 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import './App.scss';
+import Three from './components/threeContainer';
+import Control from './components/control';
 
-function App() {
+
+export default class App extends React.Component {
+ constructor(props){
+   super(props)
+   this.state={
+     bgTexture:1,
+     boxTexture:"",
+     boxSize:{
+       length:60,
+       width:60,
+       height:60
+     }
+   }
+ }
+bgTextureChange=(index)=>{
+  this.setState({
+    bgTexture: index,
+    boxSize:{
+      length:index,
+      width:index,
+      height:index
+    }
+  },()=>console.log(this.state.bgTexture))
+  
+}
+render(){
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <Three bgTexture={`./bg-textures/img${this.state.bgTexture}.jpg`} boxDim={this.state.boxSize}/>
+        <Control bgTextureChange={this.bgTextureChange}  />
     </div>
   );
 }
 
-export default App;
+}
