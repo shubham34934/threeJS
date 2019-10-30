@@ -17,7 +17,7 @@ export default class BgTexture extends React.Component{
      <div className="bg-texture">
         <div className="img-item" >
             {imgData.map((img,index) => (          
-                <img key={index} onClick={()=>this.imageClickHandler(index)} src={require(`./../threeJS/scene/bg-textures/img${index}.jpg`)} />
+                <img key={index} onClick={()=>this.imageClickHandler(index)} src={require(`./../../assets/bg-textures/img${index}.jpg`)} />
             ))}
          </div>
     </div>

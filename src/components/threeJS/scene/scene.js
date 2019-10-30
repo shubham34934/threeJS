@@ -9,8 +9,8 @@ import {OrbitControls} from "three/examples/jsm/controls/OrbitControls";
 import {ColladaLoader} from "three/examples/jsm/loaders/ColladaLoader";
 import Stats from 'three/examples/jsm/libs/stats.module.js';
 import './scene.scss';
-import ElfFile from './elf.dae';
-import samba from './Samba Dancing.fbx';
+import ElfFile from './../../../assets/elf.dae';
+import samba from './../../../assets/Samba Dancing.fbx';
 // import city from './../scene/LittlestTokyo.glb';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js';
@@ -74,7 +74,7 @@ export default class Scene extends React.Component {
   }
 
   createGround=(nextProps)=>{
-    this.groundTexture = this.loader.load(require(`${nextProps.bgTexture}`));
+    this.groundTexture = this.loader.load(require(`./../../../assets/box-textures/img1.jpg`));
     this.groundTexture.wrapS = this.groundTexture.wrapT = THREE.RepeatWrapping;
     this.groundTexture.repeat.set( 25, 25 );
     this.groundTexture.anisotropy = 16;
@@ -95,7 +95,8 @@ export default class Scene extends React.Component {
   }
 
   createObjects=(size)=>{
-    var texture = THREE.ImageUtils.loadTexture(require(`${this.props.boxTexture}`))
+    console.log(this.props.boxTexture)
+    var texture = THREE.ImageUtils.loadTexture(require(`./../../../assets/box-textures/img1.jpg`))
     texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
     texture.repeat.set( 1, 1);
     texture.anisotropy = 16;

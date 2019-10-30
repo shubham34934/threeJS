@@ -3,7 +3,6 @@ import './App.scss';
 import Three from './components/threeContainer';
 import Control from './components/control';
 
-
 export default class App extends React.Component {
  constructor(props){
    super(props)
@@ -69,7 +68,7 @@ boxSizeController=(value,type)=>{
 render(){
   return (
     <div className="App">
-        <Three intialBoxDim={this.state.intialBoxDim}  boxTexture={`./box-textures/img${this.state.boxTexture}.jpg`} bgTexture={`./bg-textures/img${this.state.bgTexture}.jpg`} boxDim={this.state.boxSize}/>
+        <Three intialBoxDim={this.state.intialBoxDim}  boxTexture={`./../../../assets/box-textures/img${this.state.boxTexture}.jpg`} bgTexture={`./bg-textures/img${this.state.bgTexture}.jpg`} boxDim={this.state.boxSize}/>
         <Control intialBoxDim={this.state.intialBoxDim} boxSizeController={this.boxSizeController} bgTextureChange={this.bgTextureChange} boxTextureChange={this.boxTextureChange} />
     </div>
   );
