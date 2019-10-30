@@ -7,8 +7,7 @@ import Typography from '@material-ui/core/Typography';
 import './controls/control.scss'; 
 import BgTexture from './controls/bgText';
 import BoxTexture from './controls/boxText';
-import Slider from '@material-ui/core/Slider';
-
+import BoxSize from './controls/boxSize';
 
 const ExpansionPanel = withStyles({
   root: {
@@ -59,8 +58,9 @@ export default function Control(props) {
   const handleChange = panel => (event, newExpanded) => {
     setExpanded(newExpanded ? panel : false);
   };
-  function valuetext(value) {
-    return `${value}°C`;
+
+  const onChangeHandler=(e,val,type)=>{
+    props.boxSizeController(val,type)
   }
 
   return (
@@ -70,8 +70,9 @@ export default function Control(props) {
           <Typography>Background Texture</Typography>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
-          {/* fddfffffffffffffff */}
+          
           <BgTexture bgTextureChange={props.bgTextureChange} />
+
         </ExpansionPanelDetails>
       </ExpansionPanel>
       <ExpansionPanel square expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
@@ -79,7 +80,9 @@ export default function Control(props) {
           <Typography>Box Texture</Typography>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
-          <BoxTexture bgTextureChange={props.bgTextureChange} />
+
+          <BoxTexture boxTextureChange={props.boxTextureChange} />
+
         </ExpansionPanelDetails>
       </ExpansionPanel>
       <ExpansionPanel square expanded={expanded === 'panel3'} onChange={handleChange('panel3')}>
@@ -88,43 +91,22 @@ export default function Control(props) {
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
           <div className="size-slider">
-               <Slider
-              defaultValue={30}
-              getAriaValueText={valuetext}
-              aria-labelledby="discrete-slider"
-              valueLabelDisplay="auto"
-              step={10}
-              marks
-              min={10}
-              max={110}
-            />
-          
-               <Slider
-              defaultValue={30}
-              getAriaValueText={valuetext}
-              aria-labelledby="discrete-slider"
-              valueLabelDisplay="auto"
-              step={10}
-              marks
-              min={10}
-              max={110}
-            />
-                
-               <Slider
-              defaultValue={30}
-              getAriaValueText={valuetext}
-              aria-labelledby="discrete-slider"
-              valueLabelDisplay="auto"
-              step={10}
-              marks
-              min={10}
-              max={110}
-            />
+             
+            <BoxSize intialBoxDim={props.intialBoxDim} sizeHandler={onChangeHandler} />
 
           </div>
+        </ExpansionPanelDetails>
+      </ExpansionPanel>
+      <ExpansionPanel square expanded={expanded === 'panel4'} onChange={handleChange('panel4')}>
+        <ExpansionPanelSummary aria-controls="panel4d-content" id="panel4d-header">
+          <Typography>Create Geometry</Typography>
+        </ExpansionPanelSummary>
+        <ExpansionPanelDetails>
+          <div className="size-slider">
 
-            
+           
 
+          </div>
         </ExpansionPanelDetails>
       </ExpansionPanel>
     </div>

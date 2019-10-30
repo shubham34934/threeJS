@@ -1,8 +1,5 @@
 import React from 'react';
 import './control.scss';
-import { makeStyles } from '@material-ui/core/styles';
-import GridList from '@material-ui/core/GridList';
-import GridListTile from '@material-ui/core/GridListTile';
 
 
 export default class BoxTexture extends React.Component{
@@ -11,7 +8,7 @@ export default class BoxTexture extends React.Component{
     }
     
     imageClickHandler=(index)=>{
-       this.props.bgTextureChange(index);
+       this.props.boxTextureChange(index);
     }
     
     render(){
@@ -28,5 +25,5 @@ export default class BoxTexture extends React.Component{
 }
 
   const imgData = [
-      1,2,3
+      1,2,3,4,5,6
      ];

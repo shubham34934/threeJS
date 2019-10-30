@@ -9,30 +9,68 @@ export default class App extends React.Component {
    super(props)
    this.state={
      bgTexture:1,
-     boxTexture:"",
+     boxTexture:1,
+     intialBoxDim:{
+       length:120,
+       width:120,
+       height:120
+     },
      boxSize:{
-       length:60,
-       width:60,
-       height:60
+       length:10,
+       width:10,
+       height:10
      }
    }
  }
+
 bgTextureChange=(index)=>{
   this.setState({
-    bgTexture: index,
+    bgTexture: index
+  }) 
+}
+
+boxTextureChange=(index)=>{
+  this.setState({
+    boxTexture: index
+  }) 
+}
+
+boxSizeController=(value,type)=>{
+  console.log(this.state.boxSize)
+  if(type==="length")
+  this.setState(prevState=>({
     boxSize:{
-      length:index,
-      width:index,
-      height:index
+      length: value,
+      width:  prevState.boxSize.width,
+      height: prevState.boxSize.height
     }
-  },()=>console.log(this.state.bgTexture))
-  
+  }))
+
+
+  if(type==="width")
+  this.setState(prevState=>({
+    boxSize:{
+      length: prevState.boxSize.length,
+      width:  value,
+      height: prevState.boxSize.height
+    }
+  }))
+
+  if(type==="height")
+  this.setState(prevState=>({
+    boxSize:{
+      length: prevState.boxSize.length,
+      width:  prevState.boxSize.width,
+      height: value
+    }
+  }))
+
 }
 render(){
   return (
     <div className="App">
-        <Three bgTexture={`./bg-textures/img${this.state.bgTexture}.jpg`} boxDim={this.state.boxSize}/>
-        <Control bgTextureChange={this.bgTextureChange}  />
+        <Three intialBoxDim={this.state.intialBoxDim}  boxTexture={`./box-textures/img${this.state.boxTexture}.jpg`} bgTexture={`./bg-textures/img${this.state.bgTexture}.jpg`} boxDim={this.state.boxSize}/>
+        <Control intialBoxDim={this.state.intialBoxDim} boxSizeController={this.boxSizeController} bgTextureChange={this.bgTextureChange} boxTextureChange={this.boxTextureChange} />
     </div>
   );
 }

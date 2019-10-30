@@ -1,9 +1,11 @@
 import React from 'react';
 import './control.scss';
 import { makeStyles } from '@material-ui/core/styles';
+import GridList from '@material-ui/core/GridList';
+import GridListTile from '@material-ui/core/GridListTile';
 
 
-export default class BgTexture extends React.Component{
+export default class CreateGeometry extends React.Component{
     constructor(props){
         super(props)
     }
@@ -24,7 +26,3 @@ export default class BgTexture extends React.Component{
         );
     }
 }
-
-  const imgData = [
-      1,2,3,4
-     ];
